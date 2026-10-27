@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- CSE 445 Assignment 4 - Directory of National Parks (11 parks, including the Grand Canyon example from Figure 1) -->
-<NationalParks>
+<NationalParks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="https://marcusvalenzuela.github.io/cse445-assignment4/NationalParks.xsd">
 
   <!-- Park 1: the Grand Canyon example from Figure 1 (three phone numbers, optional Rating present) -->
   <NationalPark Rating="4.9">

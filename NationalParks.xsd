@@ -1,39 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- CSE 445 Assignment 4 - XML Schema for the NationalParks directory (Figure 1) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
 
-  <!-- Root element: NationalParks contains one or more NationalPark elements -->
-  <xs:element name="NationalParks">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="NationalPark" maxOccurs="unbounded">
-          <xs:complexType>
-            <!-- Child elements in left-to-right order from Figure 1: Name, Phone, Address -->
-            <xs:sequence>
-              <xs:element name="Name" type="xs:string"/>
-              <!-- Multiple Phone elements are allowed; at least one is required -->
-              <xs:element name="Phone" type="xs:string" maxOccurs="unbounded"/>
-              <xs:element name="Address">
-                <xs:complexType>
-                  <!-- Address children in left-to-right order: Number, Street, City, State, Zip -->
-                  <xs:sequence>
-                    <xs:element name="Number" type="xs:string"/>
-                    <xs:element name="Street" type="xs:string"/>
-                    <xs:element name="City" type="xs:string"/>
-                    <xs:element name="State" type="xs:string"/>
-                    <xs:element name="Zip" type="xs:string"/>
-                  </xs:sequence>
-                  <!-- NearestAirport is a required attribute of Address -->
-                  <xs:attribute name="NearestAirport" type="xs:string" use="required"/>
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-            <!-- Rating is an optional attribute of NationalPark -->
-            <xs:attribute name="Rating" type="xs:decimal" use="optional"/>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+   <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+       CSE 445 Assignment 4 - Directory of National Parks
+      </xsd:documentation>
+   </xsd:annotation>
 
-</xs:schema>
+   <!-- Root element: NationalParks contains one or more NationalPark elements -->
+   <xsd:element name="NationalParks">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="NationalPark" minOccurs="1" maxOccurs="unbounded">
+               <xsd:complexType>
+                  <!-- Child elements in left-to-right order from Figure 1: Name, Phone, Address -->
+                  <xsd:sequence>
+                     <xsd:element name="Name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                     <!-- Multiple Phone elements are allowed; at least one is required -->
+                     <xsd:element name="Phone" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+                     <xsd:element name="Address" minOccurs="1" maxOccurs="1">
+                        <xsd:complexType>
+                           <!-- Address children in left-to-right order: Number, Street, City, State, Zip -->
+                           <xsd:sequence>
+                              <xsd:element name="Number" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                              <xsd:element name="Street" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                              <xsd:element name="City" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                              <xsd:element name="State" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                              <xsd:element name="Zip" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                           </xsd:sequence>
+                           <!-- NearestAirport is a required attribute of Address -->
+                           <xsd:attribute name="NearestAirport" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                     </xsd:element>
+                  </xsd:sequence>
+                  <!-- Rating is an optional attribute of NationalPark -->
+                  <xsd:attribute name="Rating" type="xsd:decimal" use="optional"/>
+               </xsd:complexType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+
+</xsd:schema>
